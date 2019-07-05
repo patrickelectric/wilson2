@@ -2,6 +2,10 @@
 
 #include <QObject>
 
+#include <tgbot/tgbot.h>
+
+using namespace TgBot;
+
 class AbilityInterface : public QObject
 {
     Q_OBJECT
@@ -40,4 +44,14 @@ public:
      * @return QString
      */
     virtual QString process(const QString& input) const = 0;
+
+    /**
+     * @brief Async message process
+     *
+     * @param message
+     */
+    virtual void asyncProcess(Message::Ptr message) const = 0;
+
+signals:
+    void finished(Message::Ptr message, const QString& output) const;
 };

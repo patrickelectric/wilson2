@@ -18,4 +18,8 @@ QString Repeater::process(const QString& input) const {
     return "Nothing to repeat :)";
 };
 
+void Repeater::asyncProcess(Message::Ptr message) const {
+    emit finished(message, process(message->text.c_str()));
+}
+
 REGISTER_ABILITY(Repeater)

@@ -1,8 +1,11 @@
 #pragma once
 
 #include <QLoggingCategory>
+#include <tgbot/tgbot.h>
 
 #include "abilityinterface.h"
+
+using namespace TgBot;
 
 class QJSEngine;
 class QQmlEngine;
@@ -49,6 +52,20 @@ public:
      */
     QString onAnyMessage(QString input);
 
+    /**
+     * @brief Get a bot message and process it
+     *
+     * @param message
+     */
+    void onAnyBotMessage(Message::Ptr message);
+
+    /**
+     * @brief Set the Bot pointer
+     *
+     * @param bot
+     */
+    void setBot(Bot* bot) { _bot = bot; };
+
 private:
     Q_DISABLE_COPY(AbilitiesManager)
 
@@ -59,6 +76,7 @@ private:
     AbilitiesManager();
 
     QMap<QString, const AbilityInterface*> _abilities;
+    Bot* _bot = nullptr;
 };
 
 /**

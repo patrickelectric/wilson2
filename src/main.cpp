@@ -6,8 +6,12 @@
 
 #include "abilities/repeater.h"
 
+Q_DECLARE_METATYPE(Message::Ptr)
+
 int main(int argc, char *argv[])
 {
+    qRegisterMetaType<Message::Ptr>();
+
     QCoreApplication app(argc, argv);
 
     QThread thread;

@@ -34,4 +34,11 @@ public:
      * @return QString
      */
     QString process(const QString& input) const override;
+
+    /**
+     * @brief Async process
+     *
+     * @param message
+     */
+    void asyncProcess(Message::Ptr message) const override;
 };

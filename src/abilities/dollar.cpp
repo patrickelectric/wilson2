@@ -12,4 +12,8 @@ QString Dollar::process(const QString& input) const {
     return QStringLiteral("inf");
 };
 
+void Dollar::asyncProcess(Message::Ptr message) const {
+    emit finished(message, process(message->text.c_str()));
+}
+
 REGISTER_ABILITY(Dollar)

@@ -21,10 +21,10 @@ void QBot::start() {
     printf("Token: %s\n", token.c_str());
 
     Bot bot(token);
+    AbilitiesManager::self()->setBot(&bot);
 
-    bot.getEvents().onAnyMessage([&bot](Message::Ptr message) {
-        QString answer = AbilitiesManager::self()->onAnyMessage(message->text.c_str());
-        bot.getApi().sendMessage(message->chat->id, answer.toStdString());
+    bot.getEvents().onAnyMessage([](Message::Ptr message){
+        AbilitiesManager::self()->onAnyBotMessage(message);
     });
 
     signal(SIGINT, [](int s) {
