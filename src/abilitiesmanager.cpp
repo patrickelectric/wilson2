@@ -11,7 +11,7 @@ AbilitiesManager::AbilitiesManager()
 void AbilitiesManager::registerAbility(const AbilityInterface* ability)
 {
     _abilities.insert(ability->command(), ability);
-    qDebug() << "New category available:" << ability->name();
+    qDebug() << "New ability available:" << ability->name();
 }
 
 QString AbilitiesManager::onAnyMessage(QString input) {
